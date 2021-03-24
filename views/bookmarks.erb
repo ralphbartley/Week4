@@ -2,13 +2,13 @@
   <label for="url">Title:</label>
   <input type="text" id="title" name="title"><br>
   <label for="url">URL:</label>
-  <input type="text" id="url" name="url" required><br>
+  <input type="url" id="url" name="url" required><br>
   <input type="submit" value="Add Bookmark">
 </form>
 
 
-<% @bookmarks.each do |row| %>
+<% @bookmarks.each do |bookmark| %>
 <ul>
-  <li> <%= row[:title] %> | <%= row[:url] %> </li>
+  <li> <a href=<%=bookmark.url%>> <%= bookmark.title %> </a> </li>
 </ul>
 <%end%>

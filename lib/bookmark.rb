@@ -1,11 +1,19 @@
 require 'pg'
 class Bookmark
 
+  attr_reader :id, :title, :url
+
+  def initialize(id, title, url)
+    @id = id
+    @title = title
+    @url = url
+  end
+
   def self.all
     connection = return_database
     result = connection.exec('SELECT * FROM bookmarks')
     result.map do |row|
-      { title: row['title'], url: row['url'] }
+      Bookmark.new(row['id'], row['title'], row['url'])
     end
   end
 

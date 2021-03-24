@@ -8,7 +8,7 @@ feature 'bookmarks' do
 
     visit '/'
     click_on 'view_bookmarks'
-    expect(page).to have_content("http://www.makersacademy.com")
+    expect(page).to have_link('Makers', :href => "http://www.makersacademy.com")
   end
 end
 
@@ -20,7 +20,7 @@ feature 'add bookmark' do
     fill_in 'title', with: 'New Bookmark'
     fill_in 'url', with: 'http://www.newbookmark.com'
     click_on 'Add Bookmark'
-    expect(page).to have_content("http://www.newbookmark.com")
+    expect(page).to have_link('New Bookmark', :href => "http://www.newbookmark.com")
   end
 
 end
