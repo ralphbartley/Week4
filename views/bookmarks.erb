@@ -1,12 +1,14 @@
 <form action='/bookmark_add' method='POST'>
-<label for="url">URL:</label><br>
-<input type="text" id="url" name="url"><br>
-<input type="submit" value="Submit">
+  <label for="url">Title:</label>
+  <input type="text" id="title" name="title"><br>
+  <label for="url">URL:</label>
+  <input type="text" id="url" name="url" required><br>
+  <input type="submit" value="Add Bookmark">
 </form>
 
 
-<% @bookmarks.each do |url| %>
+<% @bookmarks.each do |row| %>
 <ul>
-  <li> <%= url %> </li>
+  <li> <%= row[:title] %> | <%= row[:url] %> </li>
 </ul>
 <%end%>
