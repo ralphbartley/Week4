@@ -28,8 +28,10 @@ end
 feature 'delete bookmark' do
   scenario 'deletes a bookmark from the list' do
     set_up_test_table
-    fill_in 'title', with: 'New Bookmark'
-    click_on 'Delete Bookmark'
+    connection = PG.connect(dbname: 'bookmark_manager_test')
+    result = connection.exec("SELECT id FROM bookmarks WHERE title='New Bookmark';")
+    id = result.first['id']
+    click_button id
     expect(page).to_not have_link('New Bookmark', :href => "http://www.newbookmark.com")
     expect(page).to have_link('Second Bookmark', :href => "http://www.Secondbookmark.com")
   end

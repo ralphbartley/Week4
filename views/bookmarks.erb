@@ -4,12 +4,16 @@
   <label for="url">URL:</label>
   <input type="url" id="url" name="url"><br>
   <input type="submit" value="Add Bookmark"><br><br>
-  <input type="submit" value="Delete Bookmark" formaction="/bookmarks_delete" method='post'>
 </form>
 
 
 <% @bookmarks.each do |bookmark| %>
 <ul>
-  <li> <a href=<%=bookmark.url%>> <%= bookmark.title %> </a> </li>
+  <li> <a href=<%=bookmark.url%>> <%= bookmark.title %> </a>
+    <form action='/bookmarks/<%=bookmark.id%>' method='POST'>
+    <input type="hidden" name="_method" value='DELETE'>
+    <input type="submit" id="<%=bookmark.id%>" value="Delete">
+    </form>
+  </li>
 </ul>
 <%end%>

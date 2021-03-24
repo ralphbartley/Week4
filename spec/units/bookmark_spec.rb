@@ -27,7 +27,10 @@ describe Bookmark do
   describe '#self.delete' do
     it 'deletes the bookmark from the database' do
       Bookmark.add("Makers Academy", "http://www.makersacademy.com")
-      Bookmark.delete("Makers Academy")
+      connection = PG.connect(dbname: 'bookmark_manager_test')
+      result = connection.exec("SELECT id FROM bookmarks WHERE title='Makers Academy';")
+      id = result.first['id']
+      Bookmark.delete(id)
       expect(Bookmark.all).to eq []
     end
   end
