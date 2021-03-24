@@ -24,3 +24,13 @@ feature 'add bookmark' do
   end
 
 end
+
+feature 'delete bookmark' do
+  scenario 'deletes a bookmark from the list' do
+    set_up_test_table
+    fill_in 'title', with: 'New Bookmark'
+    click_on 'Delete Bookmark'
+    expect(page).to_not have_link('New Bookmark', :href => "http://www.newbookmark.com")
+    expect(page).to have_link('Second Bookmark', :href => "http://www.Secondbookmark.com")
+  end
+end

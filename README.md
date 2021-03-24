@@ -11,6 +11,10 @@ As a user
 so that I can add to my list of bookmarks
 I want to be able to add a bookmark
 
+As a user 
+so that I can remove bookmarks I no longer want
+I want to be able to delete bookmarks
+
 Database
 --------
 

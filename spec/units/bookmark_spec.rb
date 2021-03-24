@@ -24,4 +24,11 @@ describe Bookmark do
     end
   end
 
+  describe '#self.delete' do
+    it 'deletes the bookmark from the database' do
+      Bookmark.add("Makers Academy", "http://www.makersacademy.com")
+      Bookmark.delete("Makers Academy")
+      expect(Bookmark.all).to eq []
+    end
+  end
 end
